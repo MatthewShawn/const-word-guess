@@ -11,10 +11,10 @@ var Letter = function(theLetter) {
     this.getLetter = function() {
         if (this.underLetter === " " || this.isLetterGuessed) {
             //console.log("");
-            return this.underLetter;
+            return this.underLetter + " ";
         } else {
             //console.log("");
-            return "_";
+            return "_ ";
         }
     };
 
@@ -22,7 +22,7 @@ var Letter = function(theLetter) {
     // against the underlying character, updating the stored boolean value 
     // to true if it was guessed correctly
     this.guessLetter = function(aGuessedLetter) {
-        if (aGuessedLetter === this.underLetter) {
+        if (aGuessedLetter.toLowerCase() === this.underLetter.toLowerCase()) {
             //console.log("");
             this.isLetterGuessed = true;
             return true;
@@ -33,11 +33,13 @@ var Letter = function(theLetter) {
 
 };
 
-var testLet = new Letter("F");
-console.log("We should see an _ next, because isLetterGuessed defaults to false:\n");
-var aString = testLet.getLetter();
-console.log(aString + "\n\n");
-var didWeGuessIt = testLet.guessLetter("F");
-if (didWeGuessIt) {
-    console.log("We guessed it!!!");
-} else { console.log("the code is busted...somehow") };
+//var testLet = new Letter("F");
+//console.log("We should see an _ next, because isLetterGuessed defaults to false:\n");
+//var aString = testLet.getLetter();
+//console.log(aString + "\n\n");
+//var didWeGuessIt = testLet.guessLetter("f");
+//if (didWeGuessIt) {
+// console.log("We guessed it!!!");
+//} else { console.log("the code is busted...somehow") };
+
+module.exports = Letter;

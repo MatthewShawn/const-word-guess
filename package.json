@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MatthewShawn/const-word-guess/issues"
   },
-  "homepage": "https://github.com/MatthewShawn/const-word-guess#readme"
+  "homepage": "https://github.com/MatthewShawn/const-word-guess#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  }
 }
