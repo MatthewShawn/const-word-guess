@@ -5,16 +5,17 @@ var Letter = require("./Letter");
 var Word = function(theString) {
     this.letterArray = [];
 
+    //Create an array of Letter objects from the string passed into the Word constructor
     for (var idx = 0; idx < theString.length; idx++) {
-        console.log("Validating that we are accessing the input string: " + theString[idx]);
+        //console.log("Validating that we are accessing the input string: " + theString[idx]);
         //var tee = new Letter("T");
         var letter = new Letter(theString[idx]);
         this.letterArray.push(letter);
     }
 
 
-    // method that returns the underlying letter if guessed is true, and 
-    // an underscore "_" if false.
+    // This Method returns the array of Letters as a string. 
+    // An underscore "_" will be a placeholder, if the Letter has not been guessed.
     this.getWordString = function() {
         var outString = "";
         for (var idx = 0; idx < this.letterArray.length; idx++) {
@@ -24,8 +25,8 @@ var Word = function(theString) {
     };
 
     // method which that takes a character as an argument and checks it 
-    // against the underlying character, updating the stored boolean value 
-    // to true if it was guessed correctly
+    // against the Letters array, returning true is at least one match
+    // is found in the Letters array
     this.guessALetter = function(aGuessedLetter) {
         var atLeastOne = false;
         if (!isAlpha(aGuessedLetter)) return false; // if the user guessed nonsense
@@ -42,23 +43,25 @@ var Word = function(theString) {
         //  If all the letters are either guessed or spaces, then return true.
         for (var idx = 0; idx < this.letterArray.length; idx++) {
             if (this.letterArray[idx].underLetter === " " || this.letterArray[idx].isLetterGuessed) {
-                console.log("space or letter found!")
+                // console.log("space or letter found!")
 
             } else {
-                console.log("found issue, so returning false: " + this.letterArray[idx].underLetter);
+                //console.log("found issue, so returning false: " + this.letterArray[idx].underLetter);
                 return false;
             }
         }
         return true;
     }
 
+    // Quick and dirty function to check to see if a character is length one
+    // and an alphabetic.  Returns true or false...not obvious.
     var isAlpha = function(ch) {
         return typeof ch === "string" && ch.length === 1 &&
             (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
     }
 };
 
-
+// test code...keep
 //var foo = new Word("The Cask of Amontillado");
 //console.log("The next line should be all _'s and spaces, because none have been guessed.\n");
 //console.log(foo.getWordString() + "\n");

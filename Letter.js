@@ -32,7 +32,7 @@ var Letter = function(theLetter) {
 
 
 };
-
+//Commented out test code...keep it.
 //var testLet = new Letter("F");
 //console.log("We should see an _ next, because isLetterGuessed defaults to false:\n");
 //var aString = testLet.getLetter();
